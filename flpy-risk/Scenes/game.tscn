@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1auj7qh1bwac"]
+
+[ext_resource type="PackedScene" uid="uid://daeuixxg0cck5" path="res://Scenes/player.tscn" id="1_40o50"]
+[ext_resource type="PackedScene" uid="uid://xvjwsuej41fn" path="res://Scenes/game_manager.tscn" id="1_dmkdn"]
+[ext_resource type="PackedScene" uid="uid://bhobsptmkbr1" path="res://Scenes/mass_pillar.tscn" id="2_23l1n"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j28wh"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Game Manager" parent="." instance=ExtResource("1_dmkdn")]
+
+[node name="Player" parent="." instance=ExtResource("1_40o50")]
+position = Vector2(408, 303)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(500, 650)
+shape = SubResource("WorldBoundaryShape2D_j28wh")
+
+[node name="Pillars" parent="." instance=ExtResource("2_23l1n")]
+position = Vector2(1200, 0)
