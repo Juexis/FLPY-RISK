@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const jumpPower = -450
+const jumpPower : int = -450
 
 
 func _physics_process(delta: float) -> void:
@@ -13,3 +13,4 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jumpPower
 
 	move_and_slide()
+	

@@ -20,7 +20,7 @@ _data = {
 }
 point_count = 10
 
-[node name="main" type="Node2D"]
+[node name="game" type="Node2D"]
 script = ExtResource("1_itaag")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -45,7 +45,7 @@ label_settings = SubResource("LabelSettings_3gl20")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_40o50")]
+[node name="Player" parent="." instance=ExtResource("1_40o50")]
 position = Vector2(389, 365)
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -54,7 +54,7 @@ position = Vector2(389, 365)
 position = Vector2(43, 720)
 shape = SubResource("WorldBoundaryShape2D_j28wh")
 
-[node name="Pillars" parent="." groups=["Pillar"] instance=ExtResource("2_23l1n")]
+[node name="Pillars" parent="." instance=ExtResource("2_23l1n")]
 position = Vector2(1487, -144)
 
 [node name="path" type="Path2D" parent="."]

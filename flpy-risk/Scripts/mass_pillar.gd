@@ -1,6 +1,10 @@
 extends RigidBody2D
+# onready(s)
 @onready var pointline: Area2D = $Area2D
-const speed = -3
+@onready var main: Node2D = $".."
+
+#variables
+const speed = -2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +18,12 @@ func _process(delta: float) -> void:
 	# removes pillars after offscreen
 	if position.x < -100:
 		queue_free()
+	
+# You can make multiple signals of the same kind if you name them differently
+func _on_pillar_detection_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		print("lose")
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	GameManager.score += 1
+
+func _on_point_detection_body_entered(body: Node2D) -> void:
+	main.score += 1
