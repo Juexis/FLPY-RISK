@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const jumpPower = -520.0
+const jumpPower = -450
 
 
 func _physics_process(delta: float) -> void:

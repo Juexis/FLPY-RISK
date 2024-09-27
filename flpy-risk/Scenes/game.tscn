@@ -1,51 +1,45 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1auj7qh1bwac"]
+[gd_scene load_steps=6 format=3 uid="uid://d1auj7qh1bwac"]
 
 [ext_resource type="PackedScene" uid="uid://daeuixxg0cck5" path="res://Scenes/player.tscn" id="1_40o50"]
 [ext_resource type="PackedScene" uid="uid://xvjwsuej41fn" path="res://Scenes/game_manager.tscn" id="1_dmkdn"]
 [ext_resource type="PackedScene" uid="uid://bhobsptmkbr1" path="res://Scenes/mass_pillar.tscn" id="2_23l1n"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j28wh"]
+distance = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_5nlr7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1765, 0, 0, 0, 0, 0, 1385, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 1649, 5.13812, 0, 0, 0, 0, 1511, 6.16022, 0, 0, 0, 0, 1580, 5.13812, 0, 0, 0, 0, 1576, -140, 0, 0, 0, 0, 1585, 136.989, 0, 0, 0, 0, 1645, 129.834, 0, 0, 0, 0, 1525, 131.878, 0, 0, 0, 0, 1520, -129.779, 0, 0, 0, 0, 1631, -133.867, 0, 0, 0, 0, 1643, 112.459)
 }
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_3n8ph"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1555, -77, 0, 0, 0, 0, 1551, 47)
-}
-point_count = 2
+point_count = 10
 
 [node name="Game" type="Node2D"]
 
 [node name="Game Manager" parent="." instance=ExtResource("1_dmkdn")]
 
 [node name="Player" parent="." instance=ExtResource("1_40o50")]
-position = Vector2(408, 303)
+position = Vector2(389, 365)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(500, 650)
+position = Vector2(43, 720)
 shape = SubResource("WorldBoundaryShape2D_j28wh")
 
 [node name="Pillars" parent="." instance=ExtResource("2_23l1n")]
-position = Vector2(1200, 0)
+position = Vector2(1487, -144)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 autostart = true
 
-[node name="x" type="Path2D" parent="."]
+[node name="path" type="Path2D" parent="."]
+position = Vector2(87, -147.027)
+scale = Vector2(1, 0.978378)
 curve = SubResource("Curve2D_5nlr7")
 
-[node name="y" type="Path2D" parent="x"]
-curve = SubResource("Curve2D_3n8ph")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="x"]
-position = Vector2(1765, 0)
-rotation = 3.14159
+[node name="PathFollow2D" type="PathFollow2D" parent="path"]
+position = Vector2(1649, 5.13812)
+rotation = 3.13419
 
 [connection signal="timeout" from="Timer" to="Game Manager" method="_on_timer_timeout"]

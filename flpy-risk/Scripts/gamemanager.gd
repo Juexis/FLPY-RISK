@@ -13,8 +13,9 @@ func _process(delta: float) -> void:
 
 func spawn_pillars():
 	var mass = preload("res://Scenes/mass_pillar.tscn").instantiate()
-	$"../x/PathFollow2D".progress_ratio = randf()
-	mass.global_position.x = $"../x/PathFollow2D".global_position.x
+	$"../path/PathFollow2D".progress_ratio = randf()
+	mass.global_position.x = $"../path/PathFollow2D".global_position.x
+	mass.global_position.y = $"../path/PathFollow2D".global_position.y
 	add_child(mass)
 
 func _on_timer_timeout() -> void:

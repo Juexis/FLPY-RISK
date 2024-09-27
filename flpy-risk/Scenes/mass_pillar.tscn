@@ -4,12 +4,13 @@
 [ext_resource type="Script" path="res://Scripts/mass_pillar.gd" id="1_6ugrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1irm"]
-size = Vector2(17.0667, 18.8182)
+size = Vector2(0.9875, 3.90625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m635j"]
-size = Vector2(20, 15.059)
+size = Vector2(8.33333, 3.53333)
 
 [node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(1, -21)
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
@@ -17,34 +18,36 @@ freeze_mode = 1
 script = ExtResource("1_6ugrq")
 
 [node name="bottom" type="Sprite2D" parent="."]
-position = Vector2(0, 675)
+position = Vector2(-9, 725)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_6srb4")
 flip_h = true
 
 [node name="bottom collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 675)
-scale = Vector2(5, 20)
+position = Vector2(-1.5, 755)
+scale = Vector2(80, 80)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 
 [node name="top" type="Sprite2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(0, 220)
 rotation = -3.14159
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_6srb4")
 
 [node name="top collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
-scale = Vector2(5, 20)
+position = Vector2(4.5, 190)
+scale = Vector2(80, 80)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, 325)
-scale = Vector2(1, 15)
+position = Vector2(-9, 751)
+scale = Vector2(2, 2)
 
 [node name="point line" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.211666)
-scale = Vector2(1, 1.3)
+position = Vector2(4.25, -139)
+scale = Vector2(1.5, 30)
 shape = SubResource("RectangleShape2D_m635j")
 debug_color = Color(0, 0.870588, 0.407843, 0.419608)
 
