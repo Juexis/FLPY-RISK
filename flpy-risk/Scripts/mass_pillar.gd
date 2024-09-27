@@ -1,6 +1,5 @@
-extends RigidBody2D
+extends StaticBody2D
 # onready(s)
-@onready var pointline: Area2D = $Area2D
 @onready var main: Node2D = $".."
 @onready var player: CharacterBody2D = $"../Player"
 
@@ -13,7 +12,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !player.isGameOver:
 		position += Vector2(speed, 0)
 	
@@ -28,4 +27,5 @@ func _on_pillar_detection_body_entered(body: Node2D) -> void:
 
 
 func _on_point_detection_body_entered(body: Node2D) -> void:
-	main.score += 1
+	if body is CharacterBody2D:
+		main.score += 1

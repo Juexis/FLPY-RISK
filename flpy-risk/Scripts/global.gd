@@ -2,17 +2,20 @@ extends Node2D
 @export var score : int = 0
 
 @onready var score_display: Label = $CanvasLayer/ScoreDisplay
+@onready var game_over_score: Label = $CanvasLayer/GameOverScreen/GameOverScore
+@onready var game_over_screen: ColorRect = $CanvasLayer/GameOverScreen
 @onready var player: CharacterBody2D = $Player
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass 
+	get_tree().paused = false
+	game_over_screen.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	score_display.text = str(score)
+	game_over_score.text = "Score: \n" + str(score)
 
 func spawn_pillars():
 	# saves the mass pillar preset to a variable
@@ -32,3 +35,6 @@ func _on_timer_timeout() -> void:
 	if !player.isGameOver:
 		spawn_pillars()
 	
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()

@@ -1,4 +1,6 @@
 extends CharacterBody2D
+@onready var main: Node2D = $".."
+
 
 var jumpPower : int = -450
 var isGameOver : bool = false
@@ -20,4 +22,6 @@ func _physics_process(delta: float) -> void:
 		game_over()
 	
 func game_over():
+	main.game_over_screen.visible = true
+	get_tree().paused = true
 	jumpPower = 0

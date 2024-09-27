@@ -4,68 +4,62 @@
 [ext_resource type="Script" path="res://Scripts/mass_pillar.gd" id="1_6ugrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64h8g"]
-size = Vector2(102.667, 390.595)
+size = Vector2(161.25, 410.478)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1irm"]
-size = Vector2(78, 405.335)
+size = Vector2(117, 507.416)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m635j"]
-size = Vector2(9.5, 137)
+size = Vector2(14.25, 160)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="StaticBody2D"]
 position = Vector2(1, -21)
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
-freeze_mode = 1
 script = ExtResource("1_6ugrq")
-
-[node name="bottom" type="Sprite2D" parent="."]
-position = Vector2(-4, 793.5)
-scale = Vector2(0.75, 1.03431)
-texture = ExtResource("1_6srb4")
-flip_h = true
-
-[node name="PillarDetection" type="Area2D" parent="bottom"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom/PillarDetection"]
-position = Vector2(5.33333, 15.9527)
-shape = SubResource("RectangleShape2D_64h8g")
-
-[node name="bottom collision" type="CollisionShape2D" parent="."]
-position = Vector2(1, 811)
-shape = SubResource("RectangleShape2D_c1irm")
-debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
-
-[node name="top" type="Sprite2D" parent="."]
-position = Vector2(1.00078, 140.416)
-rotation = -3.14159
-scale = Vector2(0.75, 0.994822)
-texture = ExtResource("1_6srb4")
 
 [node name="PillarDetection" type="Area2D" parent="."]
 position = Vector2(-4, 793.5)
 scale = Vector2(0.75, 1.03431)
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PillarDetection"]
-position = Vector2(13.3333, -653.091)
-scale = Vector2(1, 1)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PillarDetection"]
+position = Vector2(106.042, -686.236)
 shape = SubResource("RectangleShape2D_64h8g")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PillarDetection"]
+position = Vector2(109.333, 50.7585)
+shape = SubResource("RectangleShape2D_64h8g")
+
+[node name="top" type="Sprite2D" parent="."]
+position = Vector2(66.0843, 61.3636)
+rotation = -3.14159
+scale = Vector2(1.0846, 1.25316)
+texture = ExtResource("1_6srb4")
+
 [node name="top collision" type="CollisionShape2D" parent="."]
-position = Vector2(6, 117.333)
+position = Vector2(76.5, 41)
+shape = SubResource("RectangleShape2D_c1irm")
+debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
+
+[node name="bottom" type="Sprite2D" parent="."]
+position = Vector2(68, 867.001)
+scale = Vector2(1.10294, 1.27451)
+texture = ExtResource("1_6srb4")
+flip_h = true
+
+[node name="bottom collision" type="CollisionShape2D" parent="."]
+position = Vector2(79.25, 893.292)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 
 [node name="PointDetection" type="Area2D" parent="."]
 position = Vector2(-6, 739)
 scale = Vector2(2, 2)
+collision_layer = 2
 
 [node name="point line" type="CollisionShape2D" parent="PointDetection"]
-position = Vector2(7.25, -138)
+position = Vector2(42.375, -138)
 shape = SubResource("RectangleShape2D_m635j")
 debug_color = Color(0, 0.870588, 0.407843, 0.419608)
 
-[connection signal="body_entered" from="bottom/PillarDetection" to="." method="_on_pillar_detection_body_entered"]
 [connection signal="body_entered" from="PillarDetection" to="." method="_on_pillar_detection_body_entered"]
 [connection signal="body_entered" from="PointDetection" to="." method="_on_point_detection_body_entered"]
