@@ -2,6 +2,7 @@ extends Node2D
 @export var score : int = 0
 
 @onready var score_display: Label = $CanvasLayer/ScoreDisplay
+@onready var player: CharacterBody2D = $Player
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,5 +29,6 @@ func spawn_pillars():
 	add_child(mass)
 
 func _on_timer_timeout() -> void:
-	spawn_pillars()
+	if !player.isGameOver:
+		spawn_pillars()
 	

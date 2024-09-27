@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scripts/mass_pillar.gd" id="1_6ugrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64h8g"]
-size = Vector2(102.667, 394.465)
+size = Vector2(102.667, 390.595)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1irm"]
-size = Vector2(78, 408.669)
+size = Vector2(78, 405.335)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m635j"]
 size = Vector2(9.5, 137)
@@ -29,11 +29,11 @@ flip_h = true
 [node name="PillarDetection" type="Area2D" parent="bottom"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom/PillarDetection"]
-position = Vector2(11.3333, 16.9194)
+position = Vector2(5.33333, 15.9527)
 shape = SubResource("RectangleShape2D_64h8g")
 
 [node name="bottom collision" type="CollisionShape2D" parent="."]
-position = Vector2(4, 812)
+position = Vector2(1, 811)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 
@@ -48,11 +48,12 @@ position = Vector2(-4, 793.5)
 scale = Vector2(0.75, 1.03431)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PillarDetection"]
-position = Vector2(13.3333, -651.156)
+position = Vector2(13.3333, -653.091)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_64h8g")
 
 [node name="top collision" type="CollisionShape2D" parent="."]
-position = Vector2(5.5006, 119.666)
+position = Vector2(6, 117.333)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 

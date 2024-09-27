@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const jumpPower : int = -450
+var jumpPower : int = -450
+var isGameOver : bool = false
 
 
 func _physics_process(delta: float) -> void:
@@ -9,8 +10,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump"):
-		velocity.y = jumpPower
-
+	if !isGameOver:
+		if Input.is_action_just_pressed("Jump"):
+			velocity.y = jumpPower
+	
 	move_and_slide()
 	
+	if isGameOver:
+		game_over()
+	
+func game_over():
+	jumpPower = 0
