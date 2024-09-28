@@ -41,7 +41,7 @@ func _process(_delta: float) -> void:
 	if score >= inc_thresh:
 		increase_speed()
 		inc_thresh += 5
-	print(get_tree().paused)
+	
 
 func increase_speed():
 	Globalvariables.pillarsSpeed += Globalvariables.pillarsSpeed * 0.1

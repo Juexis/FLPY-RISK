@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var main: Node2D = $".."
 @onready var caustic: CPUParticles2D = $caustic
 @onready var hopoo: CPUParticles2D = $hopoo
+@onready var feathersfx: AudioStreamPlayer2D = $feathersfx
+@export var featherArray: Array[AudioStreamWAV] = []
 
 
 # variables
@@ -21,6 +23,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("Jump"):
 			velocity.y = jumpPower * delta
 			hopoo.emitting = true
+			feather_play()
+			feathersfx.play()
 			jumps -= 1
 	
 	move_and_slide()
@@ -40,3 +44,8 @@ func _process(delta: float) -> void:
 func game_over():
 	main.game_over_screen.visible = true
 	get_tree().paused = true
+
+func feather_play():
+	var arrayIndex = randi_range(0, 2)
+	print(arrayIndex)
+	feathersfx.set_stream(featherArray[arrayIndex])
