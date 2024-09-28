@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8hw3sty2norl"]
+
+[ext_resource type="Script" path="res://Scripts/startbutton.gd" id="1_5axnm"]
+[ext_resource type="SpriteFrames" uid="uid://do3xkmoj61gqn" path="res://Sprites/acrid-dog.gif" id="1_6o1sa"]
+[ext_resource type="Texture2D" uid="uid://bp4l5xo7lx6jc" path="res://Sprites/Commencement_-_Environment_Log_1-Photoroom.png" id="2_qe1sx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c7ntj"]
+font_size = 150
+font_color = Color(0.628374, 0.0962762, 0.583377, 1)
+outline_size = 15
+outline_color = Color(0.705882, 0.94902, 0.0313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3ssu"]
+bg_color = Color(0.934657, 0.592156, 0.884296, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew5t2"]
+bg_color = Color(0.925461, 0.793493, 0.847667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amkwh"]
+bg_color = Color(0.909936, 0.418959, 0.850744, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uegev"]
+font_size = 36
+font_color = Color(0.905905, 0, 0.356857, 1)
+outline_size = 4
+outline_color = Color(0.17589, 0, 0.0444055, 1)
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_5axnm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.489372, 0.646295, 1.92523e-07, 0.376471)
+metadata/_edit_lock_ = true
+
+[node name="acrid_dog" type="AnimatedSprite2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(400, 550)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_6o1sa")
+animation = &"gif"
+autoplay = "gif"
+frame_progress = 0.95432
+
+[node name="acrid_dog2" type="AnimatedSprite2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(1500, 547)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_6o1sa")
+animation = &"gif"
+autoplay = "gif"
+frame_progress = 0.346224
+
+[node name="title" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -442.0
+offset_top = 68.0
+offset_right = 442.0
+offset_bottom = 273.0
+grow_horizontal = 2
+text = "Hoppy Acrid"
+label_settings = SubResource("LabelSettings_c7ntj")
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.5
+offset_top = -75.5
+offset_right = 252.5
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.777075, 1, 0.447896, 1)
+theme_override_font_sizes/font_size = 75
+theme_override_styles/hover = SubResource("StyleBoxFlat_k3ssu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ew5t2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_amkwh")
+text = "Start"
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = 125.0
+offset_right = 180.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.777075, 1, 0.447896, 1)
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover = SubResource("StyleBoxFlat_k3ssu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ew5t2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_amkwh")
+text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_right = 8.0
+offset_bottom = 130.0
+grow_horizontal = 0
+text = "Created by: Juexis"
+label_settings = SubResource("LabelSettings_uegev")
+
+[node name="Commencement-EnvironmentLog1-photoroom" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(960, 540)
+scale = Vector2(1.92, 1.91829)
+texture = ExtResource("2_qe1sx")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

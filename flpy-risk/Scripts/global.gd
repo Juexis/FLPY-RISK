@@ -52,6 +52,15 @@ func spawn_feathers():
 	feather.global_position.y = $featherpath/PathFollow2D.global_position.y
 	
 	add_child(feather)
+	
+func randomizer():
+	var rng = randi_range(0, 10)
+	if rng > 5:
+		return true
+		print(rng)
+	else:
+		print(rng)
+		return false
 # spawns pillars if not game over
 func _on_pillar_timer_timeout() -> void:
 	if !player.isGameOver:
@@ -67,11 +76,9 @@ func _on_feather_timer_timeout() -> void:
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
-func randomizer():
-	var rng = randi_range(0, 10)
-	if rng > 5:
-		return true
-		print(rng)
-	else:
-		print(rng)
-		return false
+func _on_back_to_title_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/titlescreen.tscn")
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+	

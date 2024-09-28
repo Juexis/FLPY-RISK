@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://do3xkmoj61gqn"
+path="res://.godot/imported/acrid-dog.gif-2a7bda6d522612afd1efc75984b09599.tres"
+
+[deps]
+
+source_file="res://Sprites/acrid-dog.gif"
+dest_files=["res://.godot/imported/acrid-dog.gif-2a7bda6d522612afd1efc75984b09599.tres"]
+
+[params]
+
+frames_per_second=30
