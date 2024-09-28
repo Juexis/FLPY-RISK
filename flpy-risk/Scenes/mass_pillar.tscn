@@ -7,7 +7,7 @@
 size = Vector2(161.25, 410.478)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1irm"]
-size = Vector2(117, 507.416)
+size = Vector2(117, 510)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m635j"]
 size = Vector2(14.25, 160)
@@ -36,7 +36,7 @@ scale = Vector2(1.0846, 1.25316)
 texture = ExtResource("1_6srb4")
 
 [node name="top collision" type="CollisionShape2D" parent="."]
-position = Vector2(76.5, 41)
+position = Vector2(76.5, 38)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 
@@ -47,7 +47,7 @@ texture = ExtResource("1_6srb4")
 flip_h = true
 
 [node name="bottom collision" type="CollisionShape2D" parent="."]
-position = Vector2(79.25, 893.292)
+position = Vector2(78, 886)
 shape = SubResource("RectangleShape2D_c1irm")
 debug_color = Color(0.789702, 0.394617, 0.456688, 0.42)
 

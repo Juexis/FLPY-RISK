@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1auj7qh1bwac"]
+[gd_scene load_steps=13 format=3 uid="uid://d1auj7qh1bwac"]
 
 [ext_resource type="PackedScene" uid="uid://daeuixxg0cck5" path="res://Scenes/player.tscn" id="1_40o50"]
 [ext_resource type="Script" path="res://Scripts/global.gd" id="1_itaag"]
 [ext_resource type="PackedScene" uid="uid://bhobsptmkbr1" path="res://Scenes/mass_pillar.tscn" id="2_23l1n"]
 [ext_resource type="LabelSettings" uid="uid://cc4yd1gktgwd" path="res://Label Settings/GameOver.tres" id="2_grmx8"]
 [ext_resource type="Script" path="res://Scripts/restart_button.gd" id="3_u13mm"]
+[ext_resource type="Texture2D" uid="uid://bp4l5xo7lx6jc" path="res://Sprites/Commencement_-_Environment_Log_1-Photoroom.png" id="6_3j0os"]
+[ext_resource type="PackedScene" uid="uid://cplr6cekahbiv" path="res://Scenes/hopoofeather.tscn" id="7_tnevr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gl20"]
 font_size = 90
@@ -13,12 +15,21 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 16
 shadow_color = Color(0, 0.85098, 1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_7i8lo"]
+font_size = 35
+font_color = Color(0.32206, 0.194731, 0.466145, 1)
+shadow_color = Color(0, 0, 0, 0.756863)
+
 [sub_resource type="LabelSettings" id="LabelSettings_eqwpx"]
-font_size = 40
+font_size = 70
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 7
-shadow_color = Color(0.47803, 0.000238825, 0.504319, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_jcet4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2196, 588, 0, 0, 0, 0, 2437, 73, 0, 0, 0, 0, 2456, 991, 0, 0, 0, 0, 2878, 92, 0, 0, 0, 0, 2999, 946)
+}
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_5nlr7"]
 _data = {
@@ -37,75 +48,97 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -48.0
 offset_right = 48.0
-offset_bottom = 83.0
+offset_bottom = 124.0
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_3gl20")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverScreen" type="ColorRect" parent="CanvasLayer"]
+[node name="JumpDisplay" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.505
-anchor_top = 0.5
-anchor_right = 0.505
-anchor_bottom = 0.5
-offset_left = -225.4
-offset_top = -347.0
-offset_right = 224.6
-offset_bottom = 144.0
+anchor_left = 0.287
+anchor_top = 0.625
+anchor_right = 0.287
+anchor_bottom = 0.625
+offset_left = -102.04
+offset_top = -25.0
+offset_right = 102.96
+offset_bottom = 24.0
+text = "Jumps: 4"
+label_settings = SubResource("LabelSettings_7i8lo")
+horizontal_alignment = 1
+
+[node name="GameOverScreen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.503437
+anchor_top = 0.497222
+anchor_right = 1.26906
+anchor_bottom = 1.04259
+offset_left = -966.6
+offset_top = -537.0
+offset_right = -516.6
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.403048, 0.711814, 1, 1)
+color = Color(0, 0.0784314, 0.152941, 0.701961)
 metadata/_edit_use_anchors_ = true
 
 [node name="GameOverText" type="Label" parent="CanvasLayer/GameOverScreen"]
+z_index = 1
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -385.0
+offset_right = 149.0
+offset_bottom = -316.0
 grow_horizontal = 2
+grow_vertical = 2
 text = "Game Over"
 label_settings = ExtResource("2_grmx8")
 horizontal_alignment = 1
 uppercase = true
-metadata/_edit_use_anchors_ = true
 
 [node name="GameOverScore" type="Label" parent="CanvasLayer/GameOverScreen"]
+z_index = 1
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.392
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.392
-offset_left = -82.0
-offset_top = -80.28
-offset_right = 79.0
-offset_bottom = 44.72
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -178.0
+offset_right = 103.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Score:
 0"
 label_settings = SubResource("LabelSettings_eqwpx")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/GameOverScreen"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.491
-anchor_top = 0.841
-anchor_right = 0.491
-anchor_bottom = 0.841
-offset_left = -57.95
-offset_top = -22.931
-offset_right = 62.05
-offset_bottom = 25.069
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = 123.0
+offset_right = 153.0
+offset_bottom = 204.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
 text = "Restart"
 script = ExtResource("3_u13mm")
-metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_40o50")]
 position = Vector2(576, 472)
@@ -118,21 +151,43 @@ build_mode = 1
 polygon = PackedVector2Array(0, 0, -3, 1078, 1921, 1083, 1919, 0)
 metadata/_edit_lock_ = true
 
+[node name="featherpath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jcet4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="featherpath"]
+position = Vector2(2196, 588)
+rotation = -1.13311
+
 [node name="Pillars" parent="." groups=["Pillar"] instance=ExtResource("2_23l1n")]
 position = Vector2(1662, 31)
 
-[node name="path" type="Path2D" parent="."]
+[node name="pillarpath" type="Path2D" parent="."]
 position = Vector2(399, 15)
 scale = Vector2(1, 0.978378)
 curve = SubResource("Curve2D_5nlr7")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="path"]
+[node name="PathFollow2D" type="PathFollow2D" parent="pillarpath"]
 position = Vector2(1757, 7.1547)
 rotation = 3.12194
 
-[node name="Timer" type="Timer" parent="."]
+[node name="PillarTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
+[node name="FeatherTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="bg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+scale = Vector2(1.92, 1.91829)
+texture = ExtResource("6_3j0os")
+metadata/_edit_lock_ = true
+
+[node name="feather" parent="." instance=ExtResource("7_tnevr")]
+position = Vector2(1502, 589)
+
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PillarTimer" to="." method="_on_pillar_timer_timeout"]
+[connection signal="timeout" from="FeatherTimer" to="." method="_on_feather_timer_timeout"]

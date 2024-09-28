@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cplr6cekahbiv"]
+
+[ext_resource type="Script" path="res://Scripts/hopoofeather.gd" id="1_3synm"]
+[ext_resource type="Texture2D" uid="uid://bpdxd35rytii3" path="res://Sprites/Hopoo_Feather.png" id="1_fwj7y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ghfnw"]
+radius = 25.0
+height = 92.0
+
+[node name="feather" type="Area2D" groups=["Feather"]]
+script = ExtResource("1_3synm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fwj7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ghfnw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
