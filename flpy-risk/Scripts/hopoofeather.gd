@@ -9,6 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += Vector2(speed,0) * delta
 
+# increases jumps and max jumps by 1
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		player.maxJumps += 1

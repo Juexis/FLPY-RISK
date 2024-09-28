@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	pass
 	
+	# resets jumps and plays caustic fx
 	if is_on_floor():
 		jumps = maxJumps
 		caustic.emitting = true

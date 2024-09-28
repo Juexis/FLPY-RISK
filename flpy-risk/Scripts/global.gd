@@ -4,28 +4,44 @@ var inc_thresh = 5
 
 @onready var score_display: Label = $CanvasLayer/ScoreDisplay
 @onready var game_over_score: Label = $CanvasLayer/GameOverScreen/GameOverScore
+@onready var high_score: Label = $CanvasLayer/GameOverScreen/HighScore
 @onready var game_over_screen: ColorRect = $CanvasLayer/GameOverScreen
+@onready var tutorial_screen: ColorRect = $CanvasLayer/TutorialScreen
 @onready var jump_display: Label = $CanvasLayer/JumpDisplay
 @onready var player: CharacterBody2D = $Player
 @onready var pillars: StaticBody2D = $Pillars
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().paused = false
+	
+	# sets the tutorial screen to show only once, after seen, the tutorial screen isn't shown again
+	if !Globalvariables.seenTutorial && !tutorial_screen.visible:
+		get_tree().paused = true
+		tutorial_screen.visible = true
+	else: 
+		get_tree().paused = false
+		tutorial_screen.visible = false
+		
 	game_over_screen.visible = false
 	Globalvariables.pillarsSpeed = -300
-
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	score_display.text = str(score)
 	jump_display.text = "Jumps: " + str(player.jumps)
 	game_over_score.text = "Score: \n" + str(score)
 	
+	# high score logic
+	if score > Globalvariables.highScore:
+		Globalvariables.highScore = score
+		
+	high_score.text = "High Score: \n" + str(Globalvariables.highScore)
+	
+	# increases the speed every 5 points earned
 	if score >= inc_thresh:
 		increase_speed()
 		inc_thresh += 5
-	print(Globalvariables.pillarsSpeed)
+	print(get_tree().paused)
 
 func increase_speed():
 	Globalvariables.pillarsSpeed += Globalvariables.pillarsSpeed * 0.1
@@ -81,4 +97,6 @@ func _on_back_to_title_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-	
+
+func _on_start_disappear_timeout() -> void:
+	$StartHelper.queue_free()

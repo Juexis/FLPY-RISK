@@ -2,6 +2,7 @@
 
 [resource]
 font_size = 100
+font_color = Color(0.652311, 0, 0.233062, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 7

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1auj7qh1bwac"]
+[gd_scene load_steps=16 format=3 uid="uid://d1auj7qh1bwac"]
 
 [ext_resource type="PackedScene" uid="uid://daeuixxg0cck5" path="res://Scenes/player.tscn" id="1_40o50"]
 [ext_resource type="Script" path="res://Scripts/global.gd" id="1_itaag"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/restart_button.gd" id="3_u13mm"]
 [ext_resource type="Texture2D" uid="uid://bp4l5xo7lx6jc" path="res://Sprites/Commencement_-_Environment_Log_1-Photoroom.png" id="6_3j0os"]
 [ext_resource type="PackedScene" uid="uid://cplr6cekahbiv" path="res://Scenes/hopoofeather.tscn" id="7_tnevr"]
+[ext_resource type="Script" path="res://Scenes/dismiss_tutorial.gd" id="8_jrpba"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gl20"]
 font_size = 90
@@ -22,8 +23,15 @@ shadow_color = Color(0, 0, 0, 0.756863)
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqwpx"]
 font_size = 70
+font_color = Color(0.728896, 0.435994, 0.965022, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e2uqv"]
+font_size = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1bge"]
+size = Vector2(131, 7)
 
 [sub_resource type="Curve2D" id="Curve2D_jcet4"]
 _data = {
@@ -70,6 +78,7 @@ label_settings = SubResource("LabelSettings_7i8lo")
 horizontal_alignment = 1
 
 [node name="GameOverScreen" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.501875
 anchor_top = 0.496296
@@ -83,6 +92,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.0784314, 0.152941, 0.701961)
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="GameOverText" type="Label" parent="CanvasLayer/GameOverScreen"]
 z_index = 1
@@ -92,10 +102,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -385.0
-offset_right = 149.0
-offset_bottom = -316.0
+offset_left = -281.0
+offset_top = -456.001
+offset_right = 292.0
+offset_bottom = -319.001
 grow_horizontal = 2
 grow_vertical = 2
 text = "Game Over"
@@ -112,12 +122,31 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -103.0
-offset_top = -231.0
+offset_top = -287.001
 offset_right = 103.0
-offset_bottom = -36.0
+offset_bottom = -92.0007
 grow_horizontal = 2
 grow_vertical = 2
 text = "Score:
+0"
+label_settings = SubResource("LabelSettings_eqwpx")
+horizontal_alignment = 1
+
+[node name="HighScore" type="Label" parent="CanvasLayer/GameOverScreen"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -76.0007
+offset_right = 254.0
+offset_bottom = 128.999
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Score:
 0"
 label_settings = SubResource("LabelSettings_eqwpx")
 horizontal_alignment = 1
@@ -130,9 +159,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -153.0
-offset_top = 76.0
+offset_top = 185.999
 offset_right = 153.0
-offset_bottom = 157.0
+offset_bottom = 266.999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -147,9 +176,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -130.0
-offset_top = 172.0
+offset_top = 281.999
 offset_right = 132.0
-offset_bottom = 234.0
+offset_bottom = 343.999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -164,9 +193,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -130.0
-offset_top = 252.0
+offset_top = 361.999
 offset_right = 132.0
-offset_bottom = 314.0
+offset_bottom = 423.999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -174,9 +203,52 @@ text = "Quit
 "
 script = ExtResource("3_u13mm")
 
+[node name="TutorialScreen" type="ColorRect" parent="CanvasLayer"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00784314, 0.00784314, 0.00784314, 0.619608)
+
+[node name="TutorialText" type="Label" parent="CanvasLayer/TutorialScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -423.0
+offset_top = 110.0
+offset_right = 423.0
+offset_bottom = 331.0
+grow_horizontal = 2
+text = "Welcome to Hoppy Acrid!
+Click [M1], [space], or [Up] to hop
+
+Be mindful of your jumps
+Collect Hopoo Feathers to increase max jumps
+Land on pillars or the ground to reset jumps
+
+Enjoy!
+
+[esc] to start"
+label_settings = SubResource("LabelSettings_e2uqv")
+horizontal_alignment = 1
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_40o50")]
 position = Vector2(576, 472)
 scale = Vector2(1.5, 1.5)
+
+[node name="StartHelper" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartHelper"]
+position = Vector2(545.5, 585.5)
+shape = SubResource("RectangleShape2D_u1bge")
+debug_color = Color(1.10701e-06, 0.661046, 0.133263, 0.42)
+
+[node name="StartDisappear" type="Timer" parent="StartHelper"]
+autostart = true
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
@@ -222,8 +294,13 @@ metadata/_edit_lock_ = true
 [node name="feather" parent="." instance=ExtResource("7_tnevr")]
 position = Vector2(1502, 589)
 
+[node name="DismissTutorial" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("8_jrpba")
+
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/BackToTitle" to="." method="_on_back_to_title_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="StartHelper/StartDisappear" to="." method="_on_start_disappear_timeout"]
 [connection signal="timeout" from="PillarTimer" to="." method="_on_pillar_timer_timeout"]
 [connection signal="timeout" from="FeatherTimer" to="." method="_on_feather_timer_timeout"]
