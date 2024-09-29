@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clwittyhlggop"
+path="res://.godot/imported/Pixel Peeker Polka - faster.mp3-ffb6f38f79140c8e6425f5458b343338.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Pixel Peeker Polka - faster.mp3"
+dest_files=["res://.godot/imported/Pixel Peeker Polka - faster.mp3-ffb6f38f79140c8e6425f5458b343338.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

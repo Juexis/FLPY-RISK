@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8hw3sty2norl"]
+[gd_scene load_steps=10 format=3 uid="uid://b8hw3sty2norl"]
 
 [ext_resource type="Script" path="res://Scripts/startbutton.gd" id="1_5axnm"]
 [ext_resource type="SpriteFrames" uid="uid://do3xkmoj61gqn" path="res://Sprites/acrid-dog.gif" id="1_6o1sa"]
 [ext_resource type="Texture2D" uid="uid://bp4l5xo7lx6jc" path="res://Sprites/Commencement_-_Environment_Log_1-Photoroom.png" id="2_qe1sx"]
+[ext_resource type="AudioStream" uid="uid://clwittyhlggop" path="res://Sounds/Pixel Peeker Polka - faster.mp3" id="4_ygt6y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c7ntj"]
 font_size = 150
@@ -20,8 +21,8 @@ bg_color = Color(0.925461, 0.793493, 0.847667, 1)
 bg_color = Color(0.909936, 0.418959, 0.850744, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_uegev"]
-font_size = 36
-font_color = Color(0.905905, 0, 0.356857, 1)
+font_size = 25
+font_color = Color(0.314972, 0.000290854, 0.392295, 1)
 outline_size = 4
 outline_color = Color(0.17589, 0, 0.0444055, 1)
 
@@ -47,7 +48,7 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_6o1sa")
 animation = &"gif"
 autoplay = "gif"
-frame_progress = 0.95432
+frame_progress = 0.291392
 
 [node name="acrid_dog2" type="AnimatedSprite2D" parent="CanvasLayer"]
 z_index = 1
@@ -56,7 +57,8 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_6o1sa")
 animation = &"gif"
 autoplay = "gif"
-frame_progress = 0.346224
+frame_progress = 0.880721
+flip_h = true
 
 [node name="title" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -109,16 +111,22 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ew5t2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_amkwh")
 text = "Quit"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 1
+[node name="Credits" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -336.0
-offset_right = 8.0
-offset_bottom = 130.0
+anchor_bottom = 1.0
+offset_left = -598.0
+offset_top = -130.0
+offset_right = -25.0
 grow_horizontal = 0
-text = "Created by: Juexis"
+grow_vertical = 0
+text = "Created by: Juexis
+Most Assets by: Hopoo Games/ Gearbox
+Music by: Chris Christodoulou & Kevin MacLeod"
 label_settings = SubResource("LabelSettings_uegev")
+horizontal_alignment = 2
 
 [node name="Commencement-EnvironmentLog1-photoroom" type="Sprite2D" parent="."]
 z_index = -2
@@ -126,6 +134,11 @@ position = Vector2(960, 540)
 scale = Vector2(1.92, 1.91829)
 texture = ExtResource("2_qe1sx")
 metadata/_edit_lock_ = true
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ygt6y")
+autoplay = true
+panning_strength = 0.0
 
 [connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

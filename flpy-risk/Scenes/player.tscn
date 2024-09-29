@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://daeuixxg0cck5"]
+[gd_scene load_steps=14 format=3 uid="uid://daeuixxg0cck5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_vlje5"]
 [ext_resource type="Texture2D" uid="uid://sp56c48lcubp" path="res://Sprites/acrid.png" id="2_6i3mu"]
-[ext_resource type="AudioStream" uid="uid://ly5u8lmj7chn" path="res://Sounds/item_proc_feather_02,item_proc_feather_03,item_proc_feather_01/item_proc_feather_01.wav" id="2_kcwae"]
+[ext_resource type="AudioStream" uid="uid://ly5u8lmj7chn" path="res://Sounds/item_proc_feather_01.wav" id="2_kcwae"]
 [ext_resource type="Texture2D" uid="uid://bd4s8c2qgfdsp" path="res://addons/kenney_particle_pack/muzzle_05.png" id="3_aer62"]
-[ext_resource type="AudioStream" uid="uid://iey8tkt5xpsu" path="res://Sounds/item_proc_feather_02,item_proc_feather_03,item_proc_feather_01/item_proc_feather_02.wav" id="3_wgnit"]
-[ext_resource type="AudioStream" uid="uid://dn4vxqlo57oyb" path="res://Sounds/item_proc_feather_02,item_proc_feather_03,item_proc_feather_01/item_proc_feather_03.wav" id="4_2f15s"]
+[ext_resource type="AudioStream" uid="uid://iey8tkt5xpsu" path="res://Sounds/item_proc_feather_02.wav" id="3_wgnit"]
+[ext_resource type="AudioStream" uid="uid://dn4vxqlo57oyb" path="res://Sounds/item_proc_feather_03.wav" id="4_2f15s"]
 [ext_resource type="Texture2D" uid="uid://nqf522d1a6k" path="res://Sprites/No_Outline_Hopoo_Feather.png" id="4_nd5e8"]
+[ext_resource type="AudioStream" uid="uid://wkgaxysffxco" path="res://Sounds/caustic sfx.wav" id="8_a76yh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv24i"]
 radius = 27.7014
@@ -93,4 +94,9 @@ scale_amount_max = 0.8
 scale_amount_curve = SubResource("Curve_s50ts")
 
 [node name="feathersfx" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="causticsfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_a76yh")
+volume_db = 3.0
 panning_strength = 0.0

@@ -1,13 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1auj7qh1bwac"]
+[gd_scene load_steps=20 format=3 uid="uid://d1auj7qh1bwac"]
 
 [ext_resource type="PackedScene" uid="uid://daeuixxg0cck5" path="res://Scenes/player.tscn" id="1_40o50"]
 [ext_resource type="Script" path="res://Scripts/global.gd" id="1_itaag"]
 [ext_resource type="PackedScene" uid="uid://bhobsptmkbr1" path="res://Scenes/mass_pillar.tscn" id="2_23l1n"]
 [ext_resource type="LabelSettings" uid="uid://cc4yd1gktgwd" path="res://Label Settings/GameOver.tres" id="2_grmx8"]
 [ext_resource type="Script" path="res://Scripts/restart_button.gd" id="3_u13mm"]
+[ext_resource type="Texture2D" uid="uid://b552viipo7bx0" path="res://icon.svg" id="5_kwueg"]
 [ext_resource type="Texture2D" uid="uid://bp4l5xo7lx6jc" path="res://Sprites/Commencement_-_Environment_Log_1-Photoroom.png" id="6_3j0os"]
+[ext_resource type="Texture2D" uid="uid://bsd6n3ymd6u06" path="res://Sprites/square.png" id="6_7vvhy"]
 [ext_resource type="PackedScene" uid="uid://cplr6cekahbiv" path="res://Scenes/hopoofeather.tscn" id="7_tnevr"]
 [ext_resource type="Script" path="res://Scenes/dismiss_tutorial.gd" id="8_jrpba"]
+[ext_resource type="AudioStream" uid="uid://b8pk3uxsuy62m" path="res://Sounds/con lentitud poderosa.mp3" id="10_hfgsg"]
+[ext_resource type="AudioStream" uid="uid://bi0tnnci101iq" path="res://Sounds/Sad-Trombone-Wah-Wah-Wah-Fail-Sound-Effect.mp3" id="11_gubjl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7i8lo"]
+font_size = 35
+font_color = Color(0.32206, 0.194731, 0.466145, 1)
+shadow_color = Color(0, 0, 0, 0.756863)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gl20"]
 font_size = 90
@@ -15,11 +24,6 @@ outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 16
 shadow_color = Color(0, 0.85098, 1, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7i8lo"]
-font_size = 35
-font_color = Color(0.32206, 0.194731, 0.466145, 1)
-shadow_color = Color(0, 0, 0, 0.756863)
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqwpx"]
 font_size = 70
@@ -35,7 +39,7 @@ size = Vector2(131, 7)
 
 [sub_resource type="Curve2D" id="Curve2D_jcet4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2196, 588, 0, 0, 0, 0, 2437, 73, 0, 0, 0, 0, 2456, 991, 0, 0, 0, 0, 2878, 92, 0, 0, 0, 0, 2999, 946)
+"points": PackedVector2Array(0, 0, 0, 0, 2226, 587, 0, 0, 0, 0, 2434, 152, 0, 0, 0, 0, 2468, 886, 0, 0, 0, 0, 2877, 140, 0, 0, 0, 0, 2981, 803)
 }
 point_count = 5
 
@@ -50,19 +54,6 @@ script = ExtResource("1_itaag")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ScoreDisplay" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.0
-offset_right = 48.0
-offset_bottom = 124.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_3gl20")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="JumpDisplay" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.287
@@ -76,6 +67,19 @@ offset_bottom = 24.0
 text = "Jumps: 4"
 label_settings = SubResource("LabelSettings_7i8lo")
 horizontal_alignment = 1
+
+[node name="ScoreDisplay" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 124.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_3gl20")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameOverScreen" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -243,26 +247,36 @@ scale = Vector2(1.5, 1.5)
 [node name="StartHelper" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartHelper"]
-position = Vector2(545.5, 585.5)
+position = Vector2(546, 585)
 shape = SubResource("RectangleShape2D_u1bge")
 debug_color = Color(1.10701e-06, 0.661046, 0.133263, 0.42)
 
 [node name="StartDisappear" type="Timer" parent="StartHelper"]
 autostart = true
 
+[node name="Sprite2D" type="Sprite2D" parent="StartHelper"]
+position = Vector2(547, 652)
+texture = ExtResource("5_kwueg")
+
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="worldboundary" type="CollisionPolygon2D" parent="Floor"]
 build_mode = 1
-polygon = PackedVector2Array(0, 0, -3, 1078, 1921, 1083, 1919, 0)
+polygon = PackedVector2Array(0, 0, -2, 1064, 1922, 1063, 1919, 0)
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+modulate = Color(0.144008, 0.211002, 0.311506, 1)
+position = Vector2(959.5, 1084)
+scale = Vector2(1.66927, 0.0601852)
+texture = ExtResource("6_7vvhy")
 
 [node name="featherpath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_jcet4")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="featherpath"]
-position = Vector2(2196, 588)
-rotation = -1.13311
+position = Vector2(2226, 587)
+rotation = -1.12477
 
 [node name="Pillars" parent="." groups=["Pillar"] instance=ExtResource("2_23l1n")]
 position = Vector2(1662, 31)
@@ -297,6 +311,16 @@ position = Vector2(1502, 589)
 [node name="DismissTutorial" type="Node" parent="."]
 process_mode = 2
 script = ExtResource("8_jrpba")
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_hfgsg")
+autoplay = true
+panning_strength = 0.0
+
+[node name="lose" type="AudioStreamPlayer2D" parent="."]
+process_mode = 2
+position = Vector2(962, 7)
+stream = ExtResource("11_gubjl")
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/BackToTitle" to="." method="_on_back_to_title_pressed"]

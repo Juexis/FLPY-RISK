@@ -21,14 +21,16 @@ func _ready() -> void:
 	else: 
 		get_tree().paused = false
 		tutorial_screen.visible = false
-		
+		# plays the music at the position it was saved as
+		$bgm.play(Globalvariables.musicProgress)
 	game_over_screen.visible = false
 	Globalvariables.pillarsSpeed = -300
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	score_display.text = str(score)
-	jump_display.text = "Jumps: " + str(player.jumps)
+	jump_display.position = Vector2(player.position.x - 100, player.position.y - 120)
+	jump_display.text = str(player.jumps)
 	game_over_score.text = "Score: \n" + str(score)
 	
 	# high score logic
@@ -42,6 +44,11 @@ func _process(_delta: float) -> void:
 		increase_speed()
 		inc_thresh += 5
 	
+	# resumes the music when resetting
+	Globalvariables.musicProgress = $bgm.get_playback_position()
+	
+	if player.isGameOver:
+		game_over()
 
 func increase_speed():
 	Globalvariables.pillarsSpeed += Globalvariables.pillarsSpeed * 0.1
@@ -78,6 +85,10 @@ func randomizer():
 		print(rng)
 		return false
 # spawns pillars if not game over
+func game_over():
+	game_over_screen.visible = true
+	$lose.play()
+	get_tree().paused = true
 func _on_pillar_timer_timeout() -> void:
 	if !player.isGameOver:
 		spawn_pillars()
